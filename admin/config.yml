@@ -1,0 +1,16 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: gallery
+    label: Gallery
+    files:
+      - file: "data/gallery.json"
+        name: items
+        label: Items
+        fields:
+          - {label: Title, name: title, widget: string}
