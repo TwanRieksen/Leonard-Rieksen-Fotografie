@@ -5,18 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Leonard Rieksen Fotografie – CMS</title>
 
-  <!-- Decap CMS (laatste stabiele build) -->
+  <!-- Decap CMS -->
   <script src="https://unpkg.com/decap-cms@3.2.1/dist/decap-cms.js"></script>
 
   <style>
     body {
-      background: #0a0a0a;
+      background: #000;
       color: #eee;
       font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
     }
   </style>
 </head>
 
 <body>
+  <h2>CMS wordt geladen…</h2>
+
+  <script>
+    // Optioneel: login callback
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("login", () => {
+        document.location.href = "/admin/";
+      });
+    }
+  </script>
 </body>
 </html>
