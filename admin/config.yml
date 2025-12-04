@@ -3,7 +3,7 @@ backend:
   repo: TwanRieksen/Leonard-Rieksen-Fotografie   # <== LET OP: exacte naam van je repo
   branch: main
   auth_type: implicit
-  app_id: JOUW_CLIENT_ID_HIER                    # <== straks vervangen door GitHub OAuth Client ID
+  app_id: Ov23lias6OADpYojL2vK
 
 media_folder: "assets/img"
 public_folder: "/assets/img"
