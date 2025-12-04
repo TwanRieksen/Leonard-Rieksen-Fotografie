@@ -8,38 +8,15 @@
   <!-- Decap CMS (laatste stabiele build) -->
   <script src="https://unpkg.com/decap-cms@3.2.1/dist/decap-cms.js"></script>
 
-  <!-- Netlify Identity Widget (nodig voor OAuth redirect) -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-
   <style>
     body {
       background: #0a0a0a;
       color: #eee;
       font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
     }
   </style>
 </head>
 
 <body>
-  <h2>CMS wordt geladen…</h2>
-
-  <script>
-    // Wanneer Netlify Identity geladen is
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", (user) => {
-        // Als de gebruiker NIET is ingelogd → redirect naar GitHub login
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
-      });
-    }
-  </script>
 </body>
 </html>
