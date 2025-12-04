@@ -1,9 +1,11 @@
 backend:
   name: github
-  repo: TwanRieksen/Leonard-Rieksen-Fotografie   # <== LET OP: exacte naam van je repo
+  repo: TwanRieksen/Leonard-Rieksen-Fotografie
   branch: main
-  auth_type: implicit
+  auth_type: oauth
   app_id: Ov23lias6OADpYojL2vK
+  base_url: https://leonardrieksenfotografie.netlify.app
+  auth_endpoint: /.netlify/functions/auth
 
 media_folder: "assets/img"
 public_folder: "/assets/img"
