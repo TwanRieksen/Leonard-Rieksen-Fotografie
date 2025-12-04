@@ -1,16 +1,89 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: TwanRieksen/Leonard-Rieksen-Fotografie   # <== LET OP: exacte naam van je repo
   branch: main
+  auth_type: implicit
+  app_id: JOUW_CLIENT_ID_HIER                    # <== straks vervangen door GitHub OAuth Client ID
 
-media_folder: "assets/uploads"
-public_folder: "/assets/uploads"
+media_folder: "assets/img"
+public_folder: "/assets/img"
+
+local_backend: false
 
 collections:
-  - name: gallery
-    label: Gallery
+  # 1) Portfolio / gallery beelden
+  - name: "gallery"
+    label: "Portfolio beelden"
+    label_singular: "Beeld"
+    description: "Alle foto's die op de site gebruikt worden."
+    editor:
+      preview: false
     files:
       - file: "data/gallery.json"
-        name: items
-        label: Items
+        name: "galleryItems"
+        label: "Galerij"
         fields:
-          - {label: Title, name: title, widget: string}
+          - label: "Beelden"
+            name: "items"
+            widget: "list"
+            allow_add: true
+            fields:
+              - { label: "Titel",      name: "title",       widget: "string" }
+              - { label: "Categorie",  name: "category",    widget: "select", options: ["architectuur", "interieur", "overig"] }
+              - { label: "Beschrijving", name: "description", widget: "text", required: false }
+              - { label: "Afbeelding (pad)", name: "image", widget: "string", hint: "Bijv. assets/img/gebouw-01.jpg" }
+
+  # 2) Alle teksten van de website
+  - name: "tekst"
+    label: "Website-teksten"
+    description: "Alle teksten van de verschillende pagina’s."
+    editor:
+      preview: false
+    files:
+      - file: "data/site-text.json"
+        name: "siteText"
+        label: "Teksten"
+        fields:
+          - label: "Homepagina"
+            name: "home"
+            widget: "object"
+            fields:
+              - { label: "Hoofdtitel",      name: "headline",  widget: "string" }
+              - { label: "Subtitel",        name: "subline",   widget: "string", required: false }
+              - { label: "Intro tekst",     name: "intro",     widget: "text" }
+
+          - label: "Diensten"
+            name: "diensten"
+            widget: "object"
+            fields:
+              - { label: "Titel",           name: "title",     widget: "string" }
+              - { label: "Intro tekst",     name: "intro",     widget: "text" }
+              - label: "Diensten blokken"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Titel",       name: "title",     widget: "string" }
+                  - { label: "Tekst",       name: "body",      widget: "text" }
+
+          - label: "Over mij"
+            name: "overMij"
+            widget: "object"
+            fields:
+              - { label: "Titel",           name: "title",     widget: "string" }
+              - { label: "Tekst",           name: "body",      widget: "text" }
+
+          - label: "Contact"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Titel",           name: "title",     widget: "string" }
+              - { label: "Intro tekst",     name: "intro",     widget: "text" }
+              - { label: "Telefoon label",  name: "phoneLabel", widget: "string", required: false }
+              - { label: "E-mail label",    name: "mailLabel",  widget: "string", required: false }
+
+          - label: "Privacy"
+            name: "privacy"
+            widget: "object"
+            fields:
+              - { label: "Titel",           name: "title",     widget: "string" }
+              - { label: "Tekst",           name: "body",      widget: "text" }
